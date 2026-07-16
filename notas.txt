@@ -42,3 +42,6 @@ git push -u origin main
 
 git push -- sube la informacion
 git pull -- desacarga la informacion dle repo
+
+cargar archivos de node modules
+npm install
