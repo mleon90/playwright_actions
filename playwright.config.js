@@ -1,13 +1,15 @@
 // @ts-check
+// @ts-ignore
 import { defineConfig, devices } from '@playwright/test';
 
-const config={
+const config = {
   testDir: './tests',
-  timeout:30 * 1000,
+  timeout: 30 * 1000,
   expect: {
     timeout: 5000
   },
-}
+};
+
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
@@ -22,14 +24,9 @@ const config={
 export default defineConfig({
   testDir: './tests',
   /* Run tests in files in parallel */
-  //fullyParallel: true,
+  // fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
-  forbidOnly: !!process.env.CI,
-  /* Retry on CI only */
-
-  retries:0,
-  /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 1 : undefined,
+ 
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
@@ -38,81 +35,64 @@ export default defineConfig({
     // baseURL: 'http://localhost:3000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    actionTimeout:0,
-    headless:false,
-    viewport:{width:1850, height:800},
+    actionTimeout: 0,
+    headless: false,
+    viewport: { width: 1850, height: 800 },
     browserName: 'chromium',
-    ignoreHTTPSErrors:true,
-    screenshot:'only-on-failure',
+    ignoreHTTPSErrors: true,
+    screenshot: 'only-on-failure',
     video: 'off',
-// 'off' - No grabar video.
-// 'on' - Grabar video para cada prueba.
-// 'retain-on-failure' - Graba video para cada prueba, pero elimina todos los videos de las ejecuciones de prueba exitosas.
-// 'on-first-retry' - Graba video solo cuando vuelva a intentar una prueba por primera vez.
-trace: 'on',
-// 'off' - No registrar rastro.
-// 'on' - Registro de seguimiento para cada prueba.
-// 'retain-on-failure' - Registra el seguimiento de cada prueba, pero lo elimina de las ejecuciones de prueba exitosas.
-// 'on-first-retry' - Registra el seguimiento solo cuando se vuelva a intentar una prueba por primera vez.
-
-
+    // 'off' - No grabar video.
+    // 'on' - Grabar video para cada prueba.
+    // 'retain-on-failure' - Graba video para cada prueba, pero elimina todos los videos de las ejecuciones de prueba exitosas.
+    // 'on-first-retry' - Graba video solo cuando vuelva a intentar una prueba por primera vez.
+    trace: 'on',
+    // 'off' - No registrar rastro.
+    // 'on' - Registro de seguimiento para cada prueba.
+    // 'retain-on-failure' - Registra el seguimiento de cada prueba, pero lo elimina de las ejecuciones de prueba exitosas.
+    // 'on-first-retry' - Registra el seguimiento solo cuando se vuelva a intentar una prueba por primera vez.
   },
 
-/*
   /* Configure projects for major browsers */
-  //projects: [
-    //{
-      //name: 'Desktop Chromium',
-    //  use: { 
-      //  browserName: 'chromium',
-        //viewport: { width: 1280, height: 720 },
-
-        // },
-      // },
-
-    //{
-    //  name: 'Desktop safari',
-      //use: { 
-        //browserName: 'webkit',
-        //viewport: { width: 1000, height: 720 },
-      //}
-    //},
-    //{
-      // name: 'Desktop firefox',
-      // use: { 
-        //browserName: 'firefox',
-        //viewport: { width: 1800, height: 720 },
-    //}
-  //},
-//{
-  //name: 'Mobile Chrome',
-  //use: devices['pixel 5'],
-//},
-//{
-  //name: 'Mobile Safari',
-  //use: devices['iPhone 12'],
-//},
-
-    /* Test against mobile viewports. */
-    // {
-    //   name: 'Mobile Chrome',
-    //   use: { ...devices['Pixel 5'] },
-    // },
-    // {
-    //   name: 'Mobile Safari',
-    //   use: { ...devices['iPhone 12'] },
-    // },
-
-    /* Test against branded browsers. */
-    // {
-    //   name: 'Microsoft Edge',
-    //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
-    // },
-    // {
-    //   name: 'Google Chrome',
-    //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
-    // },
-  //],
+  // projects: [
+  //   {
+  //     name: 'Desktop Chromium',
+  //     use: {
+  //       browserName: 'chromium',
+  //       viewport: { width: 1280, height: 720 },
+  //     },
+  //   },
+  //   {
+  //     name: 'Desktop Safari',
+  //     use: {
+  //       browserName: 'webkit',
+  //       viewport: { width: 1000, height: 720 },
+  //     },
+  //   },
+  //   {
+  //     name: 'Desktop Firefox',
+  //     use: {
+  //       browserName: 'firefox',
+  //       viewport: { width: 1800, height: 720 },
+  //     },
+  //   },
+  //   {
+  //     name: 'Mobile Chrome',
+  //     use: devices['Pixel 5'],
+  //   },
+  //   {
+  //     name: 'Mobile Safari',
+  //     use: devices['iPhone 12'],
+  //   },
+  //   {
+  //     name: 'Microsoft Edge',
+  //     use: { ...devices['Desktop Edge'], channel: 'msedge' },
+  //   },
+  //   {
+  //     name: 'Google Chrome',
+  //     use: { ...devices['Desktop Chrome'], channel: 'chrome' },
+  //   },
+  // ],
 
   /* Run your local dev server before starting the tests */
   // webServer: {
