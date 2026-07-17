@@ -52,7 +52,7 @@ const libroXL = XLSX.readFile('Data.xlsx');
 const hoja = libroXL.SheetNames[0];
 const excel = XLSX.utils.sheet_to_json(libroXL.Sheets[hoja]);
 
-test.only('Data Excel', async ({ page }) => {
+test('Data Excel', async ({ page }) => {
   page.setDefaultTimeout(80000);
   const f = new FJ(page);
 
