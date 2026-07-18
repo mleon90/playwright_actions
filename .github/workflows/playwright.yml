@@ -26,3 +26,10 @@ jobs:
 
       - name: Run Playwright tests
         run: npx playwright test
+
+- name: Install dependencies
+  run: |
+    sudo apt-get update
+    sudo apt-get install -y libnss3 xvfb
+- name: Run Playwright tests with xvfb
+  run: xvfb-run -a npx playwright test
